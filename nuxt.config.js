@@ -44,7 +44,8 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    'nuxt-sanity'
+    'nuxt-sanity',
+    '@nuxtjs/apollo'
   ],
   /*
    ** Build configuration
@@ -58,5 +59,30 @@ export default {
   sanity: {
     projectId: process.env.SANITY_PROJECT_ID,
     dataset: process.env.SANITY_DATASET
+  },
+  apollo: {
+    authenticationType: 'Basic', // optional, default: 'Bearer'
+    // (Optional) Default 'apollo' definition
+    // optional
+    watchLoading: '~/plugins/apollo-watch-loading-handler.js',
+    // optional
+    errorHandler: '~/plugins/apollo-error-handler.js',
+    // required
+    clientConfigs: {
+      default: {
+        // required
+        httpEndpoint: `https://${process.env.SANITY_GRAPHQL_URL}${process.env.SANITY_GRAPHQL_ENDPOINT}`,
+        // You can use `wss` for secure connection (recommended in production)
+        // Use `null` to disable subscriptions
+        wsEndpoint: null, // optional
+        // LocalStorage token
+        tokenName: 'apollo-token', // optional
+        // Enable Automatic Query persisting with Apollo Engine
+        persisting: false, // Optional
+        // Use websockets for everything (no HTTP)
+        // You need to pass a `wsEndpoint` for this to work
+        websocketsOnly: false // Optional
+      }
+    }
   }
 }
