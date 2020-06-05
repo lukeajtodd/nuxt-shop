@@ -13,8 +13,10 @@
     "sanity": "cd ./sanity && yarn start"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.1",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "graphql-tag": "^2.10.3",
     "nuxt": "^2.0.0",
     "nuxt-sanity": "^0.0.8"
   },
@@ -23,6 +25,7 @@
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-jest": "^24.1.0",
     "concurrently": "^5.2.0",
+    "core-js": "2",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^24.1.0",

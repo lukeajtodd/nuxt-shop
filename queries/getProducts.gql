@@ -1,0 +1,13 @@
+query {
+  allProduct {
+    _id
+    title
+    defaultProductVariant {
+      title
+      price
+    }
+    variants {
+      price
+    }
+  }
+}
