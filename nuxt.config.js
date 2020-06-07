@@ -100,24 +100,18 @@ export default {
           query: `
             query {
               allProduct {
-                _id
-                title
                 slug {
                   current
-                }
-                defaultProductVariant {
-                  title
-                  price
-                }
-                variants {
-                  price
                 }
               }
             }
           `
         }
       }).then(result => {
-        console.log(result.data)
+        const {
+          data: { allProduct }
+        } = result.data
+        return allProduct.map(product => `/products/${product.slug.current}`)
       })
     }
   }
