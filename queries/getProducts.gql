@@ -2,6 +2,9 @@ query {
   allProduct {
     _id
     title
+    slug {
+      current
+    }
     defaultProductVariant {
       title
       price

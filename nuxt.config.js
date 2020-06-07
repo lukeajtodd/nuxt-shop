@@ -1,4 +1,5 @@
 require('dotenv').config()
+const axios = require('axios')
 
 export default {
   mode: 'universal',
@@ -72,6 +73,9 @@ export default {
       default: {
         // required
         httpEndpoint: `https://${process.env.SANITY_GRAPHQL_URL}${process.env.SANITY_GRAPHQL_ENDPOINT}`,
+        httpLinkOptions: {
+          credentials: 'same-origin'
+        },
         // You can use `wss` for secure connection (recommended in production)
         // Use `null` to disable subscriptions
         wsEndpoint: null, // optional
@@ -86,15 +90,35 @@ export default {
     }
   },
   generate: {
-    routes () {
+    routes() {
       // Configre products so generate command still works
       // This wants to be a slugged lsit of products products/:slug
-      return axios.get('https://my-api/users')
-        .then((res) => {
-          return res.data.map((user) => {
-            return '/users/' + user.id
-          })
-        })
+      return axios({
+        url: `https://${process.env.SANITY_GRAPHQL_URL}${process.env.SANITY_GRAPHQL_ENDPOINT}`,
+        method: 'post',
+        data: {
+          query: `
+            query {
+              allProduct {
+                _id
+                title
+                slug {
+                  current
+                }
+                defaultProductVariant {
+                  title
+                  price
+                }
+                variants {
+                  price
+                }
+              }
+            }
+          `
+        }
+      }).then(result => {
+        console.log(result.data)
+      })
     }
   }
 }
