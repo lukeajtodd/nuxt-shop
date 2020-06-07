@@ -84,5 +84,17 @@ export default {
         websocketsOnly: false // Optional
       }
     }
+  },
+  generate: {
+    routes () {
+      // Configre products so generate command still works
+      // This wants to be a slugged lsit of products products/:slug
+      return axios.get('https://my-api/users')
+        .then((res) => {
+          return res.data.map((user) => {
+            return '/users/' + user.id
+          })
+        })
+    }
   }
 }
