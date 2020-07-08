@@ -1,22 +1,33 @@
-# shop
+# nuxt-shop - Static Shop
 
-> Test Shop Project
+## Stack
 
-## Build Setup
+- Nuxt
+- Sanity.io
+- Snipcart
+- Tailwind (& Tailblocks)
 
-```bash
-# install dependencies
-$ yarn install
+Static shop built with Nuxt & Sanity. Attempt to build a statically updated shop that houses a small number of items.
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+## Requirements
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+- Node@12
+- Yarn
 
-# generate static project
-$ yarn generate
-```
+## Setup
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+- `yarn setup`
+- Carry out `.env` updates
+- `yarn dev`
+
+## Issues
+
+- Sanity ID is hard-coded in `sanity.json`
+
+## Plans
+
+- Add Snipcart for basket functionality
+- Configuration of tailwind and tailblocks in terms of theming
+- Once MVP is finalised then re-configure component layout
+- General config file updates
+- Add in tests after component re-structure

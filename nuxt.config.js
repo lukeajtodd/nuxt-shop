@@ -91,7 +91,7 @@ export default {
   },
   generate: {
     routes() {
-      // Configre products so generate command still works
+      // Configure products so generate command still works
       // This wants to be a slugged lsit of products products/:slug
       return axios({
         url: `https://${process.env.SANITY_GRAPHQL_URL}${process.env.SANITY_GRAPHQL_ENDPOINT}`,

@@ -35,11 +35,17 @@
 <script>
 export default {
   name: 'Products',
+  asyncData(context) {
+    return { project: 'nuxt' }
+  },
   props: {
     products: {
       type: Array,
       required: true
     }
+  },
+  mounted() {
+    console.log(this.project)
   },
   computed: {
     price() {

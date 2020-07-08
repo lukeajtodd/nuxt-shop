@@ -10,7 +10,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "test": "jest",
-    "sanity": "cd ./sanity && yarn start"
+    "sanity": "cd ./sanity && yarn start",
+    "setup": "yarn env && yarn && cd ./sanity && yarn",
+    "env": "cp .env.example .env"
   },
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.1",
